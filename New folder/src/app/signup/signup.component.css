@@ -1,0 +1,19 @@
+.card {
+
+    border: none;
+    width: 500px;
+    padding: 20PX;
+    left: 50%;
+    transform: translate(0%, 50%);
+    margin-bottom: 450px;
+    /* background-color: rgb(139, 101, 120); */
+}
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+  }

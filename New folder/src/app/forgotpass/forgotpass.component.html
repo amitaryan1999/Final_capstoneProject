@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="text-center">
+            <h1><b>FORGOT PASSWORD</b></h1>
+            <h6>Please enter your email</h6>
+            <br>
+            <img id="profile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcXg0BmoGTsNAkaxypFuyv4ha9eg6Sc6tMsugNEyQtVYNw4zihQa9G7S0d_H1fet9SYVY&usqp=CAU" class="profile-img-card" />
+          </div>
+          <form [formGroup]="forgotForm" (ngSubmit)="forgotPassword()">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" placeholder="Enter email"
+                [ngClass]="{ 'error': getControl('email')?.errors && getControl('email')?.touched }">
+              <small id="emailHelp" class="form-text text-muted">We'll send you instructions to reset your password.</small>
+              <div *ngIf="getControl('email')?.errors && getControl('email')?.touched">
+                <small class="text-danger" *ngIf="getControl('email')?.errors?.['required']">Email field is required</small>
+                <small class="text-danger" *ngIf="getControl('email')?.errors?.['maxlength']">Email should be maximum 32 characters long.</small>
+                <small class="text-danger" *ngIf="getControl('email')?.errors?.['pattern']">Please enter a valid email.</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Forgot Password</button>
+            
+          </form><br><br>
+          <div class="alert alert-success" *ngIf="isEmailSent">
+            Email sent successfully!
+          </div>
+          <div class="alert alert-danger" *ngIf="isEmailFailed">
+            Failed to send email. Please try again.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

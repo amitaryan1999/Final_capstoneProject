@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Admin Portal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/view-slots" title="View the booked slots by user">View Booked Slots</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/view-consultation" title="View questions asked by user.">View Consultation</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" title="Enable you to add new properties. Add details of new property" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Property
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/add-property">Add Property</a></li>
+            <li><a class="dropdown-item" title="Enable you to Update information related to properties" routerLink="/delete-property">Update Property Details</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-highlight-property" title="Enable you to add properties on the main page. Only selected properties will be visible on the main page.">Add Highlight Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-carousel" title="Enable you to add properties in the carousel on the main page. Only selected properties will be visible in the carousel.">Add Carousel Property</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" title="Enable you to add new properties. Add details of new property" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Property Agent
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/view-agent">View Agents</a></li>
+            <li><a class="dropdown-item" title="Enable you to add information related to agent" routerLink="/add-agent">Add Agent Details</a></li>
+            <li><a class="dropdown-item" title="Enable you to Update information related to properties" routerLink="/delete-agent">Update Agent Details</a></li>
+          </ul>
+        </li>
+      </ul>
+        <button class="btn btn-outline-primary" type="submit">Logout <mat-icon>exit_to_app</mat-icon></button>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <h1>All Agents</h1>
+  <div class="input-container">
+    <input type="text" [(ngModel)]="searchValue" class="search-input" placeholder="Search">
+    <button class="search-button" (click)="search()">Search</button>
+  </div>
+    <table class="rwd-table">
+      <tbody>
+        <tr>
+          <th>Agent Photo</th>
+          <th>Agent Name</th>
+          <th>Agent Email</th>
+          <th>Agent Mobile</th>
+          <th>Agent Address</th>
+        </tr>
+        <tr *ngFor="let property of filteredProperties">
+          <td id="photo" data-th="Agent Photo">
+            <img class="image" mat-card-image [src]="getImageSource(property.image)" alt="Photo of a Shiba Inu">
+          </td>
+          <td data-th="Agent Name">
+            {{ property.agentName }}
+          </td>
+          <td data-th="Agent Email">
+            {{ property.agentEmail }}
+          </td>
+          <td data-th="Agent Mobile">
+            {{ property.agentMobile }}
+          </td>
+          <td data-th="Agent Address">
+            {{ property.agentAddress }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

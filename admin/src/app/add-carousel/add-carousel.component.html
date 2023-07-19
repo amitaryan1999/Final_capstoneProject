@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Admin Portal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/view-slots" title="View the booked slots by user">View Booked Slots</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/view-consultation" title="View questions asked by user.">View Consultation</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" title="Enable you to add new properties. Add details of new property" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Property
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/add-property">Add Property</a></li>
+            <li><a class="dropdown-item" title="Enable you to Update information related to properties" routerLink="/delete-property">Update Property Details</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-highlight-property" title="Enable you to add properties on the main page. Only selected properties will be visible on the main page.">Add Highlight Properties</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-carousel" title="Enable you to add properties in the carousel on the main page. Only selected properties will be visible in the carousel.">Add Carousel Property</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" title="Enable you to add new properties. Add details of new property" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Property Agent
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/view-agent">View Agents</a></li>
+            <li><a class="dropdown-item" title="Enable you to add information related to agent" routerLink="/add-agent">Add Agent Details</a></li>
+            <li><a class="dropdown-item" title="Enable you to Update information related to properties" routerLink="/delete-agent">Update Agent Details</a></li>
+          </ul>
+        </li>
+      </ul>
+        <button class="btn btn-outline-primary" type="submit">Logout <mat-icon>exit_to_app</mat-icon></button>
+    </div>
+  </div>
+</nav>
+<div class="main-body">
+    
+    <mat-expansion-panel class="expansion" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header class="header">
+        <mat-panel-description class="addProperty">
+          Add Carousal Properties
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <h2>Existing Carousal Images</h2>
+      <div class="existing">
+      <div class="container">
+            <mat-card class="card" *ngFor="let prop of Cproperty">
+              <img class="image" mat-card-image [src]="getImageSource(prop.images)" alt="Photo of a Shiba Inu">
+            <mat-card-header class="header">
+              <mat-card-title>{{prop.property_name}}</mat-card-title>
+              <mat-card-subtitle>{{prop.desc}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions class="action-button">
+              <button mat-button [disabled]="showAddexists">Add</button>
+              <button mat-button [disabled]="showRemoveexists" (click)="deleteCarousel(prop.property_id)">Remove</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+        <hr>
+        <div *ngIf="isCarouselFull" class="alert alert-danger" role="alert">
+          You can add only 4 Images to Carousel
+        </div>
+    <h2>Add Carousal Images</h2>
+    <div class="existing">
+        
+          <div class="container">
+              <mat-card class="card2" *ngFor="let prop of property">
+                <img class="image" mat-card-image [src]="getImageSource(prop.images)" alt="Photo of a Shiba Inu">
+              <mat-card-header>
+                <mat-card-title>{{prop.property_name}}</mat-card-title>
+                <mat-card-subtitle>{{prop.desc}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-actions>
+                <button mat-button [disabled]="showAdd" (click)="AddToCarousel(prop.property_id)">Add</button>
+                <button mat-button [disabled]="showRemove">Remove</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>   
+      </div>
+      <div class="d-grid gap-2">
+        <button id="submit" type="submit" class="btn btn-primary">Done</button>
+      </div>
+    </mat-expansion-panel>
+    </div>
+    
+  

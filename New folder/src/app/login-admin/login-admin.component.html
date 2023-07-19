@@ -1,0 +1,26 @@
+<header class="header-main">
+    <div class="username">kali</div>
+  </header>
+  <main class="main-container">
+    <form class="AdminForm" [formGroup]="AdminForm">
+    <div class="box-entry">
+      <div>
+        <img src="../../assets/Earnest Builders Logo.png" alt="kali" class="profile" />
+      </div>
+      <div class="input-main">
+        <div class="input">
+          <input formControlName="username" type="text" required="" />
+          <label>Enter your username</label>
+        </div>
+        <div class="input">
+          <input formControlName="password" type="password" required="" />
+          <label>Enter your password</label>
+        </div>
+      </div>
+    </div>
+    <div class="alert"></div>
+    <div class="button-event">
+      <button class="btn login" id="login" (click)="redirectToLogin()">Log In</button>
+    </div>
+    </form>
+  </main>
