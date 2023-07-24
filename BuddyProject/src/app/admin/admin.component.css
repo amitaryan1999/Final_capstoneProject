@@ -1,0 +1,12 @@
+.tbl{
+    margin-top: 150px;
+    /* background-color: aqua; */
+    margin-left: 150px;
+    padding: 50px;
+}
+.hd{
+   padding-right: 50px;
+}
+.td{
+    padding-right: 10px;
+}

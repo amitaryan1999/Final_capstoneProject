@@ -1,0 +1,26 @@
+<div>
+    <table class="tbl">
+    <thead >
+      <tr>
+        <th class="hd">Appointment Date</th>
+        <th class="hd">Doctor</th>
+        <th class="hd">Category</th>
+        <th class="hd">Name </th>
+        <th class="hd">Slots</th>
+        <!-- <th class="hd">Email</th> -->
+        <th class="hd">Mob no</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let x of Appoint">
+      <tr>
+        <td>{{x.date}}</td>
+        <td>{{x.doctor}}</td>
+        <td>{{x.department}}</td>
+        <td>{{x.cName}}</td>
+        <td>{{x.slots}}</td>
+        <!-- <td>{{x.email}}</td> -->
+        <td class="tb">{{x.mobNo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
